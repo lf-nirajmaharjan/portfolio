@@ -1,19 +1,8 @@
-import React from "react";
-
 const About = () => {
   return (
     <section id="about" className="s-about target-section">
       <div className="row about-info wide">
-        <div className="column lg-6 md-12 about-info__pic-block">
-          <img
-            src="images/about-photo.jpg"
-            srcSet="images/about-photo.jpg 1x, images/about-photo@2x.jpg 2x"
-            alt=""
-            className="about-info__pic"
-          />
-        </div>
-
-        <div className="column lg-6 md-12">
+        <div className="column lg-7 md-12 mx-auto">
           <div className="about-info__text">
             <h2 className="text-pretitle with-line">About</h2>
             <p className="attention-getter">
@@ -37,7 +26,7 @@ const About = () => {
 
           <ul className="skills-list h1">
             <li>UI/UX Design</li>
-            <li>Resposnive Design</li>
+            <li>Responsive Design</li>
             <li>Image Editing</li>
             <li>Product Design</li>
             <li>Prototyping</li>

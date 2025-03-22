@@ -1,5 +1,3 @@
-import React from "react";
-
 const Intro = () => {
   return (
     <>
@@ -7,7 +5,6 @@ const Intro = () => {
         <div className="row intro-content wide">
           <div className="column">
             <div className="text-pretitle with-line">Hello</div>
-
             <h1 className="text-huge-title">
               I am Niraj Maharjan, <br />
               a web designer <br />

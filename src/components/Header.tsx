@@ -1,12 +1,15 @@
-import React from "react";
+import clsx from "clsx";
 
-const Header = () => {
+interface HeaderProps {
+  handleClick: (section: string) => void;
+  activeSection: string;
+}
+
+const Header = (props: HeaderProps) => {
+  const { handleClick, activeSection } = props;
   return (
     <header className="s-header">
       <div className="header-mobile">
-        <span className="mobile-home-link">
-          <a href="index.html">Luther.</a>
-        </span>
         <a className="mobile-menu-toggle" href="#0">
           <span>Menu</span>
         </a>
@@ -15,18 +18,18 @@ const Header = () => {
       <div className="row wide main-nav-wrap">
         <nav className="column lg-12 main-nav">
           <ul>
-            <li className="current">
-              <a href="#intro" className="smoothscroll">
+            <li className={clsx(activeSection === "intro" ? "current" : "")}>
+              <a onClick={() => handleClick("intro")} className="smoothscroll">
                 Intro
               </a>
             </li>
-            <li>
-              <a href="#about" className="smoothscroll">
+            <li className={clsx(activeSection === "about" ? "current" : "")}>
+              <a onClick={() => handleClick("about")} className="smoothscroll">
                 About
               </a>
             </li>
-            <li>
-              <a href="#works" className="smoothscroll">
+            <li className={clsx(activeSection === "works" ? "current" : "")}>
+              <a onClick={() => handleClick("works")} className="smoothscroll">
                 Works
               </a>
             </li>
