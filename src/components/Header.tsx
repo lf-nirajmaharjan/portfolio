@@ -18,17 +18,17 @@ const Header = (props: HeaderProps) => {
       <div className="row wide main-nav-wrap">
         <nav className="column lg-12 main-nav">
           <ul>
-            <li className={clsx(activeSection === "intro" ? "current" : "")}>
+            <li className={clsx(activeSection === "intro" ? "" : "")}>
               <a onClick={() => handleClick("intro")} className="smoothscroll">
                 Intro
               </a>
             </li>
-            <li className={clsx(activeSection === "about" ? "current" : "")}>
+            <li className={clsx(activeSection === "about" ? "" : "")}>
               <a onClick={() => handleClick("about")} className="smoothscroll">
                 About
               </a>
             </li>
-            <li className={clsx(activeSection === "works" ? "current" : "")}>
+            <li className={clsx(activeSection === "works" ? "" : "")}>
               <a onClick={() => handleClick("works")} className="smoothscroll">
                 Works
               </a>

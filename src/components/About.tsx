@@ -1,3 +1,5 @@
+import { EducationData, experienceData } from "../data";
+
 const About = () => {
   return (
     <section id="about" className="s-about target-section">
@@ -13,7 +15,11 @@ const About = () => {
               interfaces, optimizing performance, and working closely with
               cross-functional teams to deliver high-quality projects.
             </p>
-            <a href="#0" className="btn btn--medium u-fullwidth">
+            <a
+              href="/resume-Niraj.pdf"
+              download="resume-Niraj.pdf"
+              className="btn btn--medium u-fullwidth"
+            >
               Download CV
             </a>
           </div>
@@ -38,86 +44,38 @@ const About = () => {
         <div className="column lg-6 tab-12">
           <h2 className="text-pretitle">Experience</h2>
 
-          <div className="timeline">
-            <div className="timeline__block">
-              <div className="timeline__bullet"></div>
-              <div className="timeline__header">
-                <h4 className="timeline__title">Leapfrog Technology</h4>
-                <h5 className="timeline__meta">Software Engineer</h5>
-                <p className="timeline__timeframe">February 2022 - Present</p>
+          {experienceData.map((item, index) => (
+            <div className="timeline" key={index}>
+              <div className="timeline__block">
+                <div className="timeline__bullet"></div>
+                <div className="timeline__header">
+                  <h4 className="timeline__title">{item.company}</h4>
+                  <h5 className="timeline__meta">{item.designation}</h5>
+                  <p className="timeline__timeframe">
+                    {item.startDate} - {item.endDate}
+                  </p>
+                </div>
               </div>
             </div>
-
-            <div className="timeline__block">
-              <div className="timeline__bullet"></div>
-              <div className="timeline__header">
-                <h4 className="timeline__title">DigitalFlow Studio</h4>
-                <h5 className="timeline__meta">Sr. Frontend Developer</h5>
-                <p className="timeline__timeframe">June 2018 - August 2021</p>
-              </div>
-            </div>
-
-            <div className="timeline__block">
-              <div className="timeline__bullet"></div>
-              <div className="timeline__header">
-                <h4 className="timeline__title">EB Pearls</h4>
-                <h5 className="timeline__meta">Sr. Frontend Developer</h5>
-                <p className="timeline__timeframe">June 2015 - August 2018</p>
-              </div>
-            </div>
-
-            <div className="timeline__block">
-              <div className="timeline__bullet"></div>
-              <div className="timeline__header">
-                <h4 className="timeline__title">3Hammers Technology</h4>
-                <h5 className="timeline__meta">Sr. Frontend Developer</h5>
-                <p className="timeline__timeframe">June 2015 - August 2018</p>
-              </div>
-            </div>
-
-            <div className="timeline__block">
-              <div className="timeline__bullet"></div>
-              <div className="timeline__header">
-                <h4 className="timeline__title">WorxPro Pvt. Ltd. </h4>
-                <h5 className="timeline__meta">Jr. Frontend Developer</h5>
-                <p className="timeline__timeframe">June 2015 - August 2018</p>
-              </div>
-            </div>
-          </div>
+          ))}
         </div>
 
         <div className="column lg-6 tab-12">
           <h2 className="text-pretitle">Education</h2>
 
           <div className="timeline">
-            <div className="timeline__block">
-              <div className="timeline__bullet"></div>
-              <div className="timeline__header">
-                <h4 className="timeline__title">BBA</h4>
-                <h5 className="timeline__meta">KIST college | Kamalpokhari</h5>
-                <p className="timeline__timeframe">2008</p>
+            {EducationData.map((item, index) => (
+              <div key={index} className="timeline__block">
+                <div className="timeline__bullet"></div>
+                <div className="timeline__header">
+                  <h4 className="timeline__title">{item.degree}</h4>
+                  <h5 className="timeline__meta">
+                    {item.institution} | {item.location}
+                  </h5>
+                  <p className="timeline__timeframe">{item.passOutYear}</p>
+                </div>
               </div>
-            </div>
-
-            <div className="timeline__block">
-              <div className="timeline__bullet"></div>
-              <div className="timeline__header">
-                <h4 className="timeline__title">Intermediate (+2)</h4>
-                <h5 className="timeline__meta">KMC College | Bagbazar</h5>
-                <p className="timeline__timeframe">2006</p>
-              </div>
-            </div>
-
-            <div className="timeline__block">
-              <div className="timeline__bullet"></div>
-              <div className="timeline__header">
-                <h4 className="timeline__title">School</h4>
-                <h5 className="timeline__meta">
-                  Swornim Shikshya Sadan | Bhurungkel
-                </h5>
-                <p className="timeline__timeframe">2004</p>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </div>

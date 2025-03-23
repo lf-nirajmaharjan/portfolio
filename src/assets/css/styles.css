@@ -316,6 +316,7 @@ html {
 
 body {
   margin: 0;
+  /* cursor: none; */
 }
 
 main {
@@ -3656,7 +3657,6 @@ img.u-pull-left {
   outline: 0;
 }
 
-.folio-list__item-link:focus .folio-list__item-pic::before,
 .folio-list__item-link:hover .folio-list__item-pic::before {
   opacity: 1;
   visibility: visible;
@@ -3689,45 +3689,27 @@ img.u-pull-left {
   margin: 0;
 }
 
-.folio-list__item-pic::before,
 .folio-list__item-pic::after {
   transition: all, 0.5s cubic-bezier(0.215, 0.61, 0.355, 1);
 }
 
-.folio-list__item-pic::before {
-  z-index: 1;
-  content: "";
-  display: block;
-  background-color: rgba(255, 255, 255, 0.75);
+.folio-list__item-pic--full {
+  width: 650px;
+  height: 320px;
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  width: 100%;
-  height: 100%;
-  opacity: 0;
-  visibility: hidden;
+  background-color: white;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 1;
+  border: 16px solid white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.folio-list__item-pic::after {
-  z-index: 2;
-  display: block;
-  content: "+";
-  font-family: var(--font-1);
-  font-weight: 300;
-  font-size: 2.2rem;
-  color: black;
-  text-align: center;
-  height: var(--vspace-1);
-  width: var(--vspace-1);
-  line-height: var(--vspace-1);
-  transform: scale(0.2);
-  opacity: 0;
-  visibility: hidden;
-  position: absolute;
-  top: calc(50% - var(--vspace-0_5));
-  left: calc(50% - var(--vspace-0_5));
+.folio-list__item-pic--full img {
+  height: 100%;
+  object-fit: cover;
 }
 
 .folio-list__item-text::before,
@@ -4283,5 +4265,161 @@ img.u-pull-left {
 @media screen and (max-width: 400px) {
   .ss-go-top {
     right: 6vw;
+  }
+}
+
+.custom-cursor {
+  position: fixed;
+  width: 20px;
+  height: 20px;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+  pointer-events: none;
+  mix-blend-mode: difference;
+  z-index: 9999;
+}
+
+.skills-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  list-style: none;
+  margin: 0;
+}
+
+.skill-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 250px;
+  height: 250px;
+  background-color: #f2f2f2;
+  border-radius: 8px;
+}
+
+.skill-item img {
+  margin-bottom: 0;
+}
+
+.marquee {
+  position: relative;
+  width: 100%;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+.marquee_text {
+  position: absolute;
+  min-width: 100%;
+  white-space: nowrap;
+  -webkit-animation: marquee 16s infinite linear;
+  animation: marquee 16s infinite linear;
+}
+@-webkit-keyframes marquee {
+  from {
+    translate: 70%;
+  }
+  to {
+    translate: -70%;
+  }
+}
+@keyframes marquee {
+  from {
+    translate: 70%;
+  }
+  to {
+    translate: -70%;
+  }
+}
+.marquee_blur {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background-color: black;
+  background-image: linear-gradient(to right, white, 1rem, transparent 50%),
+    linear-gradient(to left, white, 1rem, transparent 50%);
+  filter: contrast(15);
+}
+.marquee_blur p {
+  filter: blur(0.07em);
+}
+.marquee_clear {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+}
+
+.marquee {
+  --duration: 60s;
+  --gap: var(--space);
+
+  display: flex;
+  overflow: hidden;
+  user-select: none;
+  gap: var(--gap);
+  transform: skewY(-3deg);
+}
+
+.marquee__group {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: var(--gap);
+  min-width: 100%;
+  animation: scroll var(--duration) linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee__group {
+    animation-play-state: paused;
+  }
+}
+
+.marquee__group img {
+  max-width: clamp(10rem, 1rem + 28vmin, 20rem);
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 1rem;
+}
+
+.marquee__group p {
+  background-image: linear-gradient(
+    75deg,
+    hsl(240deg 70% 49%) 0%,
+    hsl(253deg 70% 49%) 11%,
+    hsl(267deg 70% 49%) 22%,
+    hsl(280deg 71% 48%) 33%,
+    hsl(293deg 71% 48%) 44%,
+    hsl(307deg 71% 48%) 56%,
+    hsl(320deg 71% 48%) 67%,
+    hsl(333deg 72% 48%) 78%,
+    hsl(347deg 72% 48%) 89%,
+    hsl(0deg 73% 47%) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.marquee--borders {
+  border-block: 3px solid dodgerblue;
+  padding-block: 0.75rem;
+}
+
+.marquee--reverse .marquee__group {
+  animation-direction: reverse;
+  animation-delay: calc(var(--duration) / -2);
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(calc(-100% - var(--gap)));
   }
 }
